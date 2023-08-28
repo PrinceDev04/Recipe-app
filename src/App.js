@@ -5,7 +5,19 @@ import Recipe from "./Components/Recipe";
 
 function App() {
   const [recipes, setRecipes] = useState([]);
-  const [query, setQuery] = useState("apple");
+  const [query, setQuery] = useState("");
+
+  async function mainData() {
+    try {
+      const result = await axios.get(
+        `https://api.edamam.com/search?q=apple&app_id=80372c86&app_key=a9cbe5ad96a5e29f94e89a250d315a90`
+      );
+      setRecipes(result.data.hits);
+      console.log(result.data.hits);
+    } catch (error) {
+      console.error("Network error", error);
+    }
+  }
 
   async function fetchData() {
     try {
@@ -13,7 +25,7 @@ function App() {
         `https://api.edamam.com/search?q=${query}&app_id=80372c86&app_key=a9cbe5ad96a5e29f94e89a250d315a90`
       );
       setRecipes(result.data.hits);
-      console.log(result.data.hits)
+      console.log(result.data.hits);
     } catch (error) {
       console.error("Network error", error);
     }
@@ -27,6 +39,8 @@ function App() {
   useEffect(() => {
     if (query) {
       fetchData();
+    } else {
+      mainData();
     }
   }, [query]);
 
