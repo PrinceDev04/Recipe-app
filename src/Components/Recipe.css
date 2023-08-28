@@ -1,0 +1,35 @@
+.main__div {
+  margin-top: 30px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+}
+
+
+.row {
+  border: 2px solid white;
+  width: 320px;
+  margin: 16px;
+}
+
+.img__div {
+    width: 100%;
+}
+
+img {
+    width: 100%;
+    height: auto;
+    padding: 14px;
+    transition: all 300ms ease;
+}
+
+img:hover {
+  transform: scale(1.08);
+}
+
+h3 {
+  text-align: center;
+  margin-bottom: 10px;
+  color: #fff;
+}
